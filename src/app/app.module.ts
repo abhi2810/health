@@ -16,6 +16,8 @@ import { HomeComponent } from './dashboard/home/home.component';
 import { ErrorComponent } from './common/error/error.component';
 import { ToolbarComponent } from './common/toolbar/toolbar.component';
 import { SidenavListComponent } from './common/sidenav-list/sidenav-list.component';
+import { CreateChannelComponent } from './authority/create-channel/create-channel.component';
+import { ViewChannelComponent } from './authority/view-channel/view-channel.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { SidenavListComponent } from './common/sidenav-list/sidenav-list.compone
     HomeComponent,
     ErrorComponent,
     ToolbarComponent,
-    SidenavListComponent
+    SidenavListComponent,
+    CreateChannelComponent,
+    ViewChannelComponent
   ],
   imports: [
     BrowserModule,
