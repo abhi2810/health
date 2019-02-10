@@ -8,20 +8,22 @@ import { DatadumpComponent } from './dashboard/datadump/datadump.component';
 import { ProfileComponent } from './dashboard/profile/profile.component';
 import { ScoreComponent } from './dashboard/score/score.component';
 import { ErrorComponent } from './common/error/error.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: 'home', component: HomeComponent},
+  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'healthdata', component: DatadumpComponent},
-  {path: 'profile', component: ProfileComponent},
-  {path: 'score', component: ScoreComponent},
+  {path: 'healthdata', component: DatadumpComponent, canActivate: [AuthGuard]},
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+  {path: 'score', component: ScoreComponent, canActivate: [AuthGuard]},
   {path: '**', component: ErrorComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }

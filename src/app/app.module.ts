@@ -18,6 +18,7 @@ import { ToolbarComponent } from './common/toolbar/toolbar.component';
 import { SidenavListComponent } from './common/sidenav-list/sidenav-list.component';
 import { CreateChannelComponent } from './authority/create-channel/create-channel.component';
 import { ViewChannelComponent } from './authority/view-channel/view-channel.component';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { ViewChannelComponent } from './authority/view-channel/view-channel.comp
     FlexLayoutModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
