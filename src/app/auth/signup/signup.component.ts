@@ -18,6 +18,14 @@ export class SignupComponent implements OnInit {
     this.authService.registerUser({
       email: form.value.email,
       password: form.value.password
+    }, {
+      userId: null,
+      email: form.value.email,
+      name: form.value.name,
+      weight: form.value.weight,
+      height: form.value.height,
+      age: form.value.age,
+      gender: form.value.gender
     });
   }
 }

@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,15 +13,15 @@ import { ScoreComponent } from './dashboard/score/score.component';
 import { ProfileComponent } from './dashboard/profile/profile.component';
 import { DatadumpComponent } from './dashboard/datadump/datadump.component';
 import { MaterialModule } from './material/material.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HomeComponent } from './dashboard/home/home.component';
 import { ErrorComponent } from './common/error/error.component';
 import { ToolbarComponent } from './common/toolbar/toolbar.component';
 import { SidenavListComponent } from './common/sidenav-list/sidenav-list.component';
-import { CreateChannelComponent } from './authority/create-channel/create-channel.component';
 import { ViewChannelComponent } from './authority/view-channel/view-channel.component';
 import { AuthService } from './auth/auth.service';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,6 @@ import { AuthService } from './auth/auth.service';
     ErrorComponent,
     ToolbarComponent,
     SidenavListComponent,
-    CreateChannelComponent,
     ViewChannelComponent
   ],
   imports: [
@@ -41,7 +43,10 @@ import { AuthService } from './auth/auth.service';
     MaterialModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

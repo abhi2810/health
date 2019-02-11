@@ -2,12 +2,6 @@
   <mat-card>
     <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f=ngForm (ngSubmit)="onSignup(f)">
       <mat-form-field>
-        <input type="password" matInput placeholder="Password" #passInput="ngModel" ngModel name="password" minlength="8">
-        <mat-hint>Password should be 8 character long.</mat-hint>
-        <mat-hint align="end">{{passInput.value?passInput.value.length:0}}/8</mat-hint>
-        <mat-error *ngIf="passInput.hasError('required')">Password is required.</mat-error>
-      </mat-form-field>
-      <mat-form-field>
         <input type="text" matInput placeholder="Name" ngModel name="name" required>
         <mat-error>Name is required.</mat-error>
       </mat-form-field>

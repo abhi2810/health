@@ -9,6 +9,7 @@ import { ProfileComponent } from './dashboard/profile/profile.component';
 import { ScoreComponent } from './dashboard/score/score.component';
 import { ErrorComponent } from './common/error/error.component';
 import { AuthGuard } from './auth/auth.guard';
+import { ViewChannelComponent } from './authority/view-channel/view-channel.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'healthdata', component: DatadumpComponent, canActivate: [AuthGuard]},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'score', component: ScoreComponent, canActivate: [AuthGuard]},
+  {path: 'viewchannel', component: ViewChannelComponent, canActivate: [AuthGuard]},
   {path: '**', component: ErrorComponent}
 ];
 

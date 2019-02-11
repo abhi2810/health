@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AuthService } from 'src/app/auth/auth.service';
+import { User } from 'src/app/auth/user.model';
 
 @Component({
   selector: 'app-profile',
@@ -8,13 +10,20 @@ import { NgForm } from '@angular/forms';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  user: User;
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
 
   onSignup(form: NgForm) {
-    console.log(form);
+    this.user = this.authService.getUser();
+    this.user.name = form.value.name;
+    this.user.age = form.value.age;
+    this.user.weight = form.value.weight;
+    this.user.height = form.value.height;
+    this.user.gender = form.value.gender;
+    this.authService.updateUser({... this.user});
   }
 
 }
