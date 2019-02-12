@@ -19,9 +19,9 @@ import { HomeComponent } from './dashboard/home/home.component';
 import { ErrorComponent } from './common/error/error.component';
 import { ToolbarComponent } from './common/toolbar/toolbar.component';
 import { SidenavListComponent } from './common/sidenav-list/sidenav-list.component';
-import { ViewChannelComponent } from './authority/view-channel/view-channel.component';
 import { AuthService } from './auth/auth.service';
 import { environment } from 'src/environments/environment';
+import { ViewChannelComponent } from './monitoring/view-channel/view-channel.component';
 
 @NgModule({
   declarations: [

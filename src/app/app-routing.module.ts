@@ -9,7 +9,7 @@ import { ProfileComponent } from './dashboard/profile/profile.component';
 import { ScoreComponent } from './dashboard/score/score.component';
 import { ErrorComponent } from './common/error/error.component';
 import { AuthGuard } from './auth/auth.guard';
-import { ViewChannelComponent } from './authority/view-channel/view-channel.component';
+import { ViewChannelComponent } from './monitoring/view-channel/view-channel.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},

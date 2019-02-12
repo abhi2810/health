@@ -10,7 +10,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root'
 })
 export class AuthService {
+
   private user: User;
+  viewUser: User;
   authChange = new Subject<boolean>();
   getdata = new Subscription();
 
@@ -35,7 +37,7 @@ export class AuthService {
       console.log(result);
       user.userId = result.user.uid;
       this.user = user;
-      this.fdb.collection('channel').doc(user.channel).collection(user.userId).add(user)
+      this.fdb.collection('channel').doc('channel').collection(user.channel).doc(user.userId).set(user)
       .then(() => {
         this.fdb.collection('user').doc(user.userId).collection('userdata').doc('data').set(user)
         .then(res => {
