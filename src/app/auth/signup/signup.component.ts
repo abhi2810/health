@@ -25,7 +25,9 @@ export class SignupComponent implements OnInit {
       weight: form.value.weight,
       height: form.value.height,
       age: form.value.age,
-      gender: form.value.gender
+      gender: form.value.gender,
+      channel: form.value.channel,
+      isAuthority: false
     });
   }
 }

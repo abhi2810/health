@@ -6,5 +6,6 @@ export interface User {
     height: number;
     age: number;
     gender: number;
+    channel: string;
     isAuthority?: boolean;
 }

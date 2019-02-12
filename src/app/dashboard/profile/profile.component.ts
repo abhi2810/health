@@ -11,13 +11,15 @@ import { User } from 'src/app/auth/user.model';
 export class ProfileComponent implements OnInit {
 
   user: User;
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {
+    this.user = this.authService.getUser();
+    console.log(this.user);
+   }
 
   ngOnInit() {
   }
 
   onSignup(form: NgForm) {
-    this.user = this.authService.getUser();
     this.user.name = form.value.name;
     this.user.age = form.value.age;
     this.user.weight = form.value.weight;

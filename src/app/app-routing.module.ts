@@ -13,9 +13,9 @@ import { ViewChannelComponent } from './authority/view-channel/view-channel.comp
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'healthdata', component: DatadumpComponent, canActivate: [AuthGuard]},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'score', component: ScoreComponent, canActivate: [AuthGuard]},

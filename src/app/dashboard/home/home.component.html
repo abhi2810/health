@@ -1,4 +1,4 @@
-<section fxHide.lt-sm fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
+<section *ngIf="!user.isAuthority" fxHide.lt-sm fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
   <mat-card fxLayout="column" fxLayoutAlign="center center" class="info-card">
     <mat-card-content>
       <p>
@@ -19,7 +19,7 @@
 </section>
 
 
-<section fxHide.gt-xs fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
+<section *ngIf="!user.isAuthority" fxHide.gt-xs fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
   <mat-card fxLayout="column" fxLayoutAlign="center center" class="info-card">
     <mat-card-content>
       <p>
@@ -37,4 +37,17 @@
       <span>Health Data</span>
     </button>
   </section>
+</section>
+
+<section *ngIf="user.isAuthority" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
+  <mat-card fxLayout="column" fxLayoutAlign="center center" class="info-card">
+    <mat-card-content>
+      <p>
+        {{user.channel}}
+      </p>
+    </mat-card-content>
+  </mat-card>
+  <button routerLink="/viewchannel" mat-raised-button class="card-button" fxLayout="column" fxLayoutAlign="center center">
+    <span>View Channel</span>
+  </button>
 </section>

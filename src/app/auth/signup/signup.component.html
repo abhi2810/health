@@ -13,6 +13,12 @@
         <mat-error *ngIf="passInput.hasError('required')">Password is required.</mat-error>
       </mat-form-field>
       <mat-form-field>
+        <input type="text" matInput placeholder="Channel Id" #channelInput="ngModel" ngModel name="channel" minlength="8" required>
+        <mat-hint>You can collect the channel id from your supervisor.</mat-hint>
+        <mat-hint align="end">{{channelInput.value?channelInput.value.length:0}}/8</mat-hint>
+        <mat-error *ngIf="channelInput.hasError('required')">Password is required.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
         <input type="text" matInput placeholder="Name" ngModel name="name" required>
         <mat-error>Name is required.</mat-error>
       </mat-form-field>
