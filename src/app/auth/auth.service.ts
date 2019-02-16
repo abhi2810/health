@@ -5,6 +5,8 @@ import { Subject, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import * as json2csv from 'json2csv';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,7 @@ export class AuthService {
   authChange = new Subject<boolean>();
   getdata = new Subscription();
 
-  constructor(private router: Router, private fAuth: AngularFireAuth, private fdb: AngularFirestore) {
+  constructor(private router: Router, private fAuth: AngularFireAuth, private fdb: AngularFirestore, private domSanitizer: DomSanitizer) {
     this.user = {
       userId: null,
       email: null,
@@ -115,5 +117,13 @@ export class AuthService {
   private authSuccesfully() {
     this.authChange.next(true);
     this.router.navigate(['/home']);
+  }
+
+  public generateCSVDownloadLink(options: { filename: string, data: any[], columns: string[] }): SafeUrl {
+    const fields = options.columns;
+    const opts = { fields, output: options.filename };
+    const csv = json2csv.parse(options.data, opts);
+
+    return this.domSanitizer.bypassSecurityTrustUrl('data:text/csv,' + encodeURIComponent(csv));
   }
 }

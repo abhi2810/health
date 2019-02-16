@@ -15,6 +15,7 @@ export class DatadumpComponent implements OnInit, OnDestroy, AfterViewInit {
 
   user: User;
   viewUser: User;
+  gotData: boolean;
   displayedColumns: string[] = ['position', 'date', 'time', 'hr', 'temp'];
   dataSource = new MatTableDataSource<SensorData>();
   dataSubscription = new Subscription();
@@ -23,6 +24,7 @@ export class DatadumpComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(private authService: AuthService, private fdb: AngularFirestore) {
     this.user = authService.getUser();
+    this.gotData = false;
     if (this.user.isAuthority) {
       this.viewUser = authService.viewUser;
     } else {
@@ -37,6 +39,7 @@ export class DatadumpComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit() {
     this.dataSubscription = this.fdb.collection('user').doc(this.viewUser.userId)
     .collection('sensordata').valueChanges().subscribe((data: SensorData[]) => {
+      this.gotData = true;
       this.dataSource.data = data;
       console.log(data);
     });
@@ -49,6 +52,14 @@ export class DatadumpComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy() {
     this.dataSubscription.unsubscribe();
+  }
+
+  getCSVDownloadLink() {
+    return this.authService.generateCSVDownloadLink({
+      filename: `data.csv`,
+      data: this.dataSource.data,
+      columns: [ 'date', 'time', 'hr', 'temp', 'score'],
+    });
   }
 
 }

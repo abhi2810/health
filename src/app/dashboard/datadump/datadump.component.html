@@ -32,4 +32,5 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
   <mat-paginator #paginator [pageSize]="15" [pageSizeOptions]="[15, 30, 45]" showFirstLastButtons></mat-paginator>
+  <a mat-raised-button color="primary" [download]="csvFileName" [href]="getCSVDownloadLink()" [disabled]="!gotData" >CSV export</a>
 </section>
