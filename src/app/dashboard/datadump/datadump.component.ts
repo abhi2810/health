@@ -16,6 +16,7 @@ export class DatadumpComponent implements OnInit, OnDestroy, AfterViewInit {
   user: User;
   viewUser: User;
   gotData: boolean;
+  csvFileName: string;
   displayedColumns: string[] = ['position', 'date', 'time', 'hr', 'temp'];
   dataSource = new MatTableDataSource<SensorData>();
   dataSubscription = new Subscription();
@@ -30,6 +31,7 @@ export class DatadumpComponent implements OnInit, OnDestroy, AfterViewInit {
     } else {
       this.viewUser = this.user;
     }
+    this.csvFileName = this.viewUser.name + 'DataDump.csv';
   }
 
   doFilter(filtervalue: string) {
