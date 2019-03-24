@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from 'src/app/auth/auth.service';
 import { User } from 'src/app/auth/user.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -11,12 +12,19 @@ import { User } from 'src/app/auth/user.model';
 export class ProfileComponent implements OnInit {
 
   user: User;
+  loading = new Subscription();
+  isLoading: boolean;
+
   constructor(private authService: AuthService) {
     this.user = this.authService.getUser();
+    this.isLoading = false;
     console.log(this.user);
    }
 
   ngOnInit() {
+    this.loading = this.authService.isLoading.subscribe(data => {
+      this.isLoading = data;
+    });
   }
 
   onSignup(form: NgForm) {

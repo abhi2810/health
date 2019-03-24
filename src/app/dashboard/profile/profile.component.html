@@ -29,7 +29,8 @@
           <mat-error>Weight is required.</mat-error>
         </mat-form-field>
       </div>
-      <button type="submit" color="primary" [disabled]="f.invalid" mat-raised-button>Update</button>
+      <mat-progress-spinner diameter="35" *ngIf="isLoading" mode="indeterminate"></mat-progress-spinner>
+      <button *ngIf="!isLoading" type="submit" color="primary" [disabled]="f.invalid" mat-raised-button>Update</button>
     </form>
   </mat-card>
 </section>

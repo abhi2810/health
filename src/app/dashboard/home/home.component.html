@@ -1,10 +1,12 @@
 <section *ngIf="!user.isAuthority" fxHide.lt-sm fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
   <mat-card fxLayout="column" fxLayoutAlign="center center" class="info-card">
     <mat-card-content>
+      <h2>
+          Hello {{user.name}},<br>
+      </h2>
       <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Use this application to manage your healthmeter account.<br>
+        In case of any issues contact project33asap@gmail.com
       </p>
     </mat-card-content>
   </mat-card>
@@ -22,11 +24,13 @@
 <section *ngIf="!user.isAuthority" fxHide.gt-xs fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
   <mat-card fxLayout="column" fxLayoutAlign="center center" class="info-card">
     <mat-card-content>
-      <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-      </p>
+        <h2>
+            Hello {{user.name}},<br>
+        </h2>
+        <p>
+          Use this application to manage your healthmeter account.<br>
+          In case of any issues contact project33asap@gmail.com
+        </p>
     </mat-card-content>
   </mat-card>
   <section class="card-holder" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
@@ -42,9 +46,13 @@
 <section *ngIf="user.isAuthority" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
   <mat-card fxLayout="column" fxLayoutAlign="center center" class="info-card">
     <mat-card-content>
-      <p>
-        {{user.channel}}
-      </p>
+      <h1>
+        Hello {{user.name}},<br>
+      </h1>
+      <h2>
+        Your Channel Id: {{user.channel}} <br>
+        Share this with your channel members.
+      </h2>
     </mat-card-content>
   </mat-card>
   <button routerLink="/viewchannel" mat-raised-button class="card-button" fxLayout="column" fxLayoutAlign="center center">
